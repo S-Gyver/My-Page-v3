@@ -1,0 +1,107 @@
+/* ==== THEME: Pastel Breeze for Bootstrap 5 ==== */
+/* ปรับธีมผ่าน CSS variables (ไม่ต้อง build Sass) */
+:root{
+  /* พาเลตพาสเทลหลัก */
+  --bs-primary:   #ff9ac6;  /* Pink Pastel */
+  --bs-secondary: #b4b8ff;  /* Lavender */
+  --bs-success:   #7ae1b8;  /* Mint */
+  --bs-info:      #93d9ff;  /* Sky */
+  --bs-warning:   #ffd599;  /* Peach */
+  --bs-danger:    #ffa3a3;  /* Soft Red */
+
+  --bs-body-bg:   #ffffff;
+  --bs-body-color:#2b2b2b;
+
+  --bs-link-color:       var(--bs-primary);
+  --bs-link-hover-color: #ff7fb5;
+
+  --bs-border-radius:    .85rem;
+  --bs-border-radius-lg: 1.1rem;
+  --bs-border-radius-xl: 1.35rem;
+
+  --shadow-soft: 0 6px 18px rgba(180,184,255,.14);
+  --shadow-hero: 0 12px 28px rgba(255,154,198,.25);
+}
+
+/* เลื่อนนุ่ม */
+html{ scroll-behavior:smooth; }
+
+/* NAVBAR */
+.navbar{
+  backdrop-filter:saturate(135%) blur(6px);
+}
+.navbar .nav-link.active,
+.navbar .nav-link:focus,
+.navbar .nav-link:hover{
+  color:var(--bs-primary) !important;
+  font-weight:600;
+}
+
+/* HERO ไล่สีพาสเทล (ใส่คลาส .hero ใน <header>) */
+.hero{
+  background: linear-gradient(135deg,
+    #fff5f9 0%,
+    #f4f5ff 35%,
+    #f3fbff 100%);
+  box-shadow: var(--shadow-hero);
+  border-bottom: 1px solid rgba(180,184,255,.18);
+}
+
+/* ชื่อแบบไล่สี */
+.text-gradient{
+  background: linear-gradient(90deg, #ff9ac6, #b4b8ff 60%, #93d9ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* การ์ดนุ่ม ๆ */
+.card{
+  border:0;
+  box-shadow: var(--shadow-soft);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(180,184,255,.2);
+}
+
+/* ปุ่มโทนพาสเทล */
+.btn-primary{
+  border: none;
+  box-shadow: 0 6px 14px rgba(255,154,198,.25);
+}
+.btn-outline-primary{
+  border-color: rgba(255,154,198,.55);
+  color: var(--bs-primary);
+}
+.btn-outline-primary:hover{
+  background: var(--bs-primary);
+  color:#fff;
+  border-color: var(--bs-primary);
+}
+
+/* Progress bar */
+.progress{
+  background: rgba(180,184,255,.18);
+  height: .75rem;
+  border-radius: 999px;
+}
+.progress-bar{
+  background: linear-gradient(90deg, #ff9ac6, #b4b8ff);
+}
+
+/* List group ขอบบาง ๆ พาสเทล */
+.list-group-item{
+  border:1px solid rgba(180,184,255,.18);
+}
+
+/* รูปโปรไฟล์ให้เด้งเบา ๆ */
+.object-fit-cover{ object-fit:cover; }
+.rounded-circle.shadow-sm{
+  box-shadow: 0 8px 18px rgba(0,0,0,.08) !important;
+}
+
+/* ลิงก์ทั่วไป */
+a{ text-underline-offset:2px; }
+a:hover{ text-decoration-color: var(--bs-primary); }
