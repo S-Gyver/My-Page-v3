@@ -13,36 +13,37 @@
 
 <body>
 
-    <!-- ===== NAVBAR (ไม่ใช้ JS: ใช้ checkbox + CSS ของเราเองควบคุมการพับ/กาง) ===== -->
-    <!-- class ของ Bootstrap: navbar, container, navbar-expand-lg, bg-white, border-bottom, fixed-top -->
-    <!-- class ของเราเอง: custom-nav, nav-toggle, custom-toggler, custom-collapse -->
-    <nav class="navbar navbar-expand-lg bg-white border-bottom fixed-top custom-nav">
-        <div class="container">
+<!-- ===== NAVBAR (ไม่ใช้ JS: ใช้ checkbox + CSS ของเราเองควบคุมการพับ/กาง) ===== -->
+  <!-- class ของ Bootstrap: navbar, container, navbar-expand-lg, bg-white, border-bottom, fixed-top -->
+  <!-- class ของเราเอง: custom-nav, nav-toggle, custom-toggler, custom-collapse -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom fixed-top custom-nav">
+    <div class="container">
+      <!-- โลโก้/แบรนด์ -->
+      <a class="navbar-brand fw-semibold" href="#top">RESUME</a>
 
-            <a class="navbar-brand fw-semibold" href="#top">RESUME</a>
+      <!-- checkbox ที่ใช้เป็นตัวควบคุมเมนูบนจอเล็ก (ซ่อนด้วย CSS ของเราเอง) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="เปิด/ปิดเมนู">
 
-            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="เปิด/ปิดเมนู">
+      <!-- ปุ่ม Hamburger (label ผูกกับ checkbox ด้านบน) -->
+      <label for="nav-toggle" class="navbar-toggler d-lg-none custom-toggler" aria-controls="navContent" aria-expanded="false">
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+      </label>
 
-            <label for="nav-toggle" class="navbar-toggler d-lg-none custom-toggler" aria-controls="navContent"
-                aria-expanded="false">
-                <span class="toggler-bar"></span>
-                <span class="toggler-bar"></span>
-                <span class="toggler-bar"></span>
-            </label>
-
-            <!-- เมนูนำทาง (บนจอเล็กเราจะควบคุมแสดง/ซ่อนด้วย .custom-collapse ใน CSS ของเรา) -->
-            <div id="navContent" class="collapse navbar-collapse custom-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <!-- ลิงก์แบบ Anchor ตามโจทย์ (กดแล้วเลื่อนไป section นั้น) -->
-                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#others">Others</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+      <!-- เมนูนำทาง (บนจอเล็กเราจะควบคุมแสดง/ซ่อนด้วย .custom-collapse ใน CSS ของเรา) -->
+      <div id="navContent" class="collapse navbar-collapse custom-collapse">
+        <ul class="navbar-nav ms-auto">
+          <!-- ลิงก์แบบ Anchor ตามโจทย์ (กดแล้วเลื่อนไป section นั้น) -->
+          <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#others">Others</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
     <!-- ===== HERO ส่วนหัวโปรไฟล์ ===== -->
     <!-- hero = คลาสของเราเอง ใช้ทำพื้นหลังไล่สีพาสเทล -->
