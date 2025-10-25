@@ -1,53 +1,52 @@
-/* ==== THEME: Pastel Breeze for Bootstrap 5 ==== */
-/* ปรับธีมผ่าน CSS variables (ไม่ต้อง build Sass) */
+/* ===================================================================
+   CSS ของเราเอง (ไม่ใช่ของ Bootstrap)
+   - กำหนดธีมพาสเทลด้วย CSS variables
+   - ทำพื้นหลัง hero ไล่สี
+   - ปรับเงาการ์ด/ปุ่ม/แถบ progress
+   - ทำ Navbar แบบ Hamburger ด้วย CSS-only (checkbox hack)
+   =================================================================== */
+
+/* ---------- ธีมพาสเทลของเรา (override ผ่าน CSS variables) ---------- */
 :root{
-  /* พาเลตพาสเทลหลัก */
-  --bs-primary:   #ff9ac6;  /* Pink Pastel */
-  --bs-secondary: #b4b8ff;  /* Lavender */
-  --bs-success:   #7ae1b8;  /* Mint */
-  --bs-info:      #93d9ff;  /* Sky */
-  --bs-warning:   #ffd599;  /* Peach */
-  --bs-danger:    #ffa3a3;  /* Soft Red */
+  /* พาเลตหลัก */
+  --bs-primary:   #ff9ac6;  /* pink pastel */
+  --bs-secondary: #b4b8ff;  /* lavender */
+  --bs-info:      #93d9ff;  /* sky */
+  --bs-success:   #7ae1b8;  /* mint */
 
-  --bs-body-bg:   #ffffff;
-  --bs-body-color:#2b2b2b;
-
+  /* สีลิงก์หลัก/ตอน hover */
   --bs-link-color:       var(--bs-primary);
   --bs-link-hover-color: #ff7fb5;
 
-  --bs-border-radius:    .85rem;
-  --bs-border-radius-lg: 1.1rem;
-  --bs-border-radius-xl: 1.35rem;
+  /* ความโค้งมุมโกลบอล */
+  --bs-border-radius: .9rem;
 
+  /* เงาที่เราใช้เอง */
   --shadow-soft: 0 6px 18px rgba(180,184,255,.14);
   --shadow-hero: 0 12px 28px rgba(255,154,198,.25);
 }
 
-/* เลื่อนนุ่ม */
+/* ---------- โครงหน้า/การเลื่อน ---------- */
+/* ให้เลื่อนนุ่มเมื่อลิงก์ anchor */
 html{ scroll-behavior:smooth; }
 
-/* NAVBAR */
-.navbar{
-  backdrop-filter:saturate(135%) blur(6px);
-}
-.navbar .nav-link.active,
-.navbar .nav-link:focus,
-.navbar .nav-link:hover{
-  color:var(--bs-primary) !important;
-  font-weight:600;
-}
+/* กันเนื้อหาไม่ให้จมใต้ navbar (เพราะ fixed-top) */
+body{ padding-top: 4.25rem; }
 
-/* HERO ไล่สีพาสเทล (ใส่คลาส .hero ใน <header>) */
+/* เวลาคลิกลิงก์ไปยัง section ให้มีระยะกัน navbar */
+section { scroll-margin-top: 5rem; }
+
+/* ระยะ padding ส่วน section */
+.section-pad{ padding: 64px 0; }
+
+/* ---------- HERO (พื้นหลังไล่สีของเราเอง) ---------- */
 .hero{
-  background: linear-gradient(135deg,
-    #fff5f9 0%,
-    #f4f5ff 35%,
-    #f3fbff 100%);
+  background: linear-gradient(135deg,#fff5f9 0%,#f4f5ff 35%,#f3fbff 100%);
   box-shadow: var(--shadow-hero);
   border-bottom: 1px solid rgba(180,184,255,.18);
 }
 
-/* ชื่อแบบไล่สี */
+/* ---------- หัวเรื่องไล่สี (เฉพาะข้อความ) ---------- */
 .text-gradient{
   background: linear-gradient(90deg, #ff9ac6, #b4b8ff 60%, #93d9ff);
   -webkit-background-clip: text;
@@ -55,33 +54,9 @@ html{ scroll-behavior:smooth; }
   color: transparent;
 }
 
-/* การ์ดนุ่ม ๆ */
-.card{
-  border:0;
-  box-shadow: var(--shadow-soft);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.card:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(180,184,255,.2);
-}
+/* ---------- การ์ด/โปรเกรสบาร์ (ตกแต่งเพิ่มจากของ Bootstrap) ---------- */
+.card{ border:0; box-shadow: var(--shadow-soft); }
 
-/* ปุ่มโทนพาสเทล */
-.btn-primary{
-  border: none;
-  box-shadow: 0 6px 14px rgba(255,154,198,.25);
-}
-.btn-outline-primary{
-  border-color: rgba(255,154,198,.55);
-  color: var(--bs-primary);
-}
-.btn-outline-primary:hover{
-  background: var(--bs-primary);
-  color:#fff;
-  border-color: var(--bs-primary);
-}
-
-/* Progress bar */
 .progress{
   background: rgba(180,184,255,.18);
   height: .75rem;
@@ -91,17 +66,65 @@ html{ scroll-behavior:smooth; }
   background: linear-gradient(90deg, #ff9ac6, #b4b8ff);
 }
 
-/* List group ขอบบาง ๆ พาสเทล */
-.list-group-item{
-  border:1px solid rgba(180,184,255,.18);
+/* ---------- อวตาร (ให้รูปครอปสวย) ---------- */
+.object-fit-cover{ object-fit: cover; }
+.rounded-circle.shadow-sm{ box-shadow: 0 8px 18px rgba(0,0,0,.08) !important; }
+
+/* ===================================================================
+   Navbar CSS-only (ส่วนนี้เป็น “ของเราเองทั้งหมด”)
+   ทำ Hamburger โดยไม่ใช้ JavaScript
+   =================================================================== */
+
+/* ซ่อน checkbox ที่ใช้ควบคุมสถานะเมนูบนจอเล็ก */
+.nav-toggle{ 
+  position: absolute; 
+  left: -9999px; 
 }
 
-/* รูปโปรไฟล์ให้เด้งเบา ๆ */
-.object-fit-cover{ object-fit:cover; }
-.rounded-circle.shadow-sm{
-  box-shadow: 0 8px 18px rgba(0,0,0,.08) !important;
+/* ปุ่ม Hamburger (label) ของเราเอง */
+.custom-toggler{
+  border: none;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: .25rem .5rem;
+  cursor: pointer;
+}
+.custom-toggler .toggler-bar{
+  width: 26px; height: 2px;
+  background: #333;
+  display: block;
+  border-radius: 2px;
 }
 
-/* ลิงก์ทั่วไป */
-a{ text-underline-offset:2px; }
-a:hover{ text-decoration-color: var(--bs-primary); }
+/* โครงเมนูแบบพับ/กาง: เริ่มต้น “ปิดไว้” บนจอเล็ก */
+.custom-collapse{
+  display: none;
+}
+
+/* ถ้า checkbox ถูกติ๊ก (ผู้ใช้กด hamburger) ให้ “แสดงเมนู” */
+.nav-toggle:checked ~ .custom-collapse{
+  display: block;
+}
+
+/* สไตล์ลิงก์ใน navbar ตอน hover/active */
+.custom-nav .nav-link:hover,
+.custom-nav .nav-link:focus{
+  color: var(--bs-primary);
+}
+.custom-nav .nav-link.active{ 
+  color: var(--bs-primary); 
+  font-weight: 600;
+}
+
+/* ขนาดหน้าจอ ≥ 992px (lg up): โชว์เมนูตลอดเหมือน Bootstrap ปกติ */
+@media (min-width: 992px){
+  .custom-toggler{ display: none !important; }   /* ซ่อนปุ่ม hamburger */
+  .custom-collapse{ display: block !important; } /* แสดงเมนูเสมอ */
+}
+
+/* หมายเหตุ:
+   - คลาสของ Bootstrap (เช่น .navbar, .container, .row, .col, .card, .progress) ยังทำงานตามปกติ
+   - ส่วนที่เป็นการ “ควบคุมพับ/กาง” navbar บนจอเล็กทั้งหมด มาจาก CSS ของเราเอง (custom-*)
+   - ไม่มี JavaScript ใด ๆ
+*/
