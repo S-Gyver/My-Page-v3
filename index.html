@@ -6,86 +6,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Resume</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap CSS (ของ Bootstrap) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
 
+    <!-- สไตล์ของเราเอง -->
     <link rel="stylesheet" href="CSS/styles.css" />
 </head>
 
 <body>
 
-<!-- ===== NAVBAR (ไม่ใช้ JS: ใช้ checkbox + CSS ของเราเองควบคุมการพับ/กาง) ===== -->
-  <!-- class ของ Bootstrap: navbar, container, navbar-expand-lg, bg-white, border-bottom, fixed-top -->
-  <!-- class ของเราเอง: custom-nav, nav-toggle, custom-toggler, custom-collapse -->
-  <nav class="navbar navbar-expand-lg bg-white border-bottom fixed-top custom-nav">
-    <div class="container">
-      <!-- โลโก้/แบรนด์ -->
-      <a class="navbar-brand fw-semibold" href="#top">RESUME</a>
+    <!-- ===== NAVBAR (ไม่ใช้ JS: ใช้ checkbox + CSS ของเราเองควบคุมเมนูมือถือ) ===== -->
+    <!-- คลาสของ Bootstrap: navbar, container, navbar-expand-lg, bg-white, border-bottom, fixed-top -->
+    <!-- คลาสของเราเอง: custom-nav, nav-toggle, custom-toggler, custom-collapse -->
+    <nav class="navbar navbar-expand-lg bg-white border-bottom fixed-top custom-nav">
+        <div class="container">
 
-      <!-- checkbox ที่ใช้เป็นตัวควบคุมเมนูบนจอเล็ก (ซ่อนด้วย CSS ของเราเอง) -->
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="เปิด/ปิดเมนู">
+            <!-- โลโก้/แบรนด์ฝั่งซ้าย -->
+            <a class="navbar-brand fw-semibold" href="#top">RESUME</a>
 
-      <!-- ปุ่ม Hamburger (label ผูกกับ checkbox ด้านบน) -->
-      <label for="nav-toggle" class="navbar-toggler d-lg-none custom-toggler" aria-controls="navContent" aria-expanded="false">
-        <span class="toggler-bar"></span>
-        <span class="toggler-bar"></span>
-        <span class="toggler-bar"></span>
-      </label>
+            <!-- checkbox ที่เราใช้เป็น trigger สำหรับเมนูบนจอเล็ก (จะถูกซ่อนด้วย .nav-toggle ใน CSS ของเรา) -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="เปิด/ปิดเมนู">
 
-      <!-- เมนูนำทาง (บนจอเล็กเราจะควบคุมแสดง/ซ่อนด้วย .custom-collapse ใน CSS ของเรา) -->
-      <div id="navContent" class="collapse navbar-collapse custom-collapse">
-        <ul class="navbar-nav ms-auto">
-          <!-- ลิงก์แบบ Anchor ตามโจทย์ (กดแล้วเลื่อนไป section นั้น) -->
-          <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#others">Others</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+            <!-- ปุ่ม Hamburger (เป็น label ผูกกับ checkbox ด้านบน) -->
+            <label for="nav-toggle"
+                   class="navbar-toggler d-lg-none custom-toggler"
+                   aria-controls="navContent" aria-expanded="false">
+                <span class="toggler-bar"></span>
+                <span class="toggler-bar"></span>
+                <span class="toggler-bar"></span>
+            </label>
+
+            <!-- เมนูนำทาง (จะโชว์/ซ่อนตาม nav-toggle บนจอเล็ก, และโชว์ตลอดบนจอใหญ่) -->
+            <div id="navContent" class="collapse navbar-collapse custom-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <!-- ลิงก์ Anchor ตาม section -->
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#others">Others</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
 
     <!-- ===== HERO ส่วนหัวโปรไฟล์ ===== -->
-    <!-- hero = คลาสของเราเอง ใช้ทำพื้นหลังไล่สีพาสเทล -->
+    <!-- hero = คลาสของเราเอง ใช้ทำพื้นหลังไล่สีพาสเทลที่หัวหน้าเว็บ -->
     <header id="top" class="py-5 hero">
         <div class="container">
             <div class="row align-items-center gy-4">
-                <!-- รูปโปรไฟล์วงกลม (Bootstrap: rounded-circle / เงา: shadow-sm) -->
+
+                <!-- รูปโปรไฟล์วงกลม -->
                 <div class="col-12 col-md-3 text-center">
-                    <img src="img/Pro.png" alt="รูปโปรไฟล์" class="rounded-circle shadow-sm object-fit-cover"
-                        style="width:180px;height:180px;">
+                    <img src="img/Pro.png"
+                         alt="รูปโปรไฟล์"
+                         class="rounded-circle shadow-sm object-fit-cover"
+                         style="width:180px;height:180px;">
                 </div>
+
+                <!-- ข้อมูลชื่อ/สาขา/คณะ/สถาบัน -->
                 <div class="col-12 col-md-9">
-                    <!-- h1 ชื่อ-นามสกุล + ไลน์สีข้อความ (text-gradient ของเราเอง) -->
                     <h1 class="mb-1 text-gradient">อธิป ดีนิเวศน์</h1>
-                    <!-- สาขาวิชาที่สังกัด (ตัวเอียง em ตามโจทย์) -->
                     <p class="lead mb-2"><em>สาขาเทคโนโลยีดิจิทัลและสารสนเทศ</em></p>
-                    <!-- ชื่อคณะ -->
                     <p class="mb-1">คณะวิศวกรรมศาสตร์และเทคโนโลยี</p>
-                    <!-- ชื่อสถาบัน (ลิงก์ไป PIM) -->
                     <p class="mb-0">
-                        <a href="http://pim.ac.th" target="_blank" rel="noopener">สถาบันการจัดการปัญญาภิวัฒน์</a>
+                        <a href="http://pim.ac.th" target="_blank" rel="noopener">
+                            สถาบันการจัดการปัญญาภิวัฒน์
+                        </a>
                     </p>
                 </div>
+
             </div>
         </div>
     </header>
 
+
     <!-- ===== SECTION: About Me (เกี่ยวกับตัวฉัน) ===== -->
-    <!-- section-pad = padding แนวตั้งของเราเอง -->
+    <!-- section-pad = ระยะหายใจแนวตั้ง (padding) ของเราเอง -->
     <section id="about" class="section-pad">
         <div class="container">
             <div class="row g-4">
+
+                <!-- การ์ดฝั่งซ้าย: แนะนำตัว -->
                 <div class="col-12 col-lg-6">
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="h5">About Me</h2>
-                            <p class="mb-0">โฟกัสงานเว็บ UX/UI ชอบทดลองไอเดียใหม่ ๆ และทำงานเป็นระบบ ชอบทำงานสายดิจิทัล
-                                สนใจเว็บแอป ชอบพัฒนาเว็บและดีไซน์ รักการเรียนรู้ ลงมือทำจริง และใส่ใจรายละเอียด
+                            <p class="mb-0">
+                                โฟกัสงานเว็บ UX/UI ชอบทดลองไอเดียใหม่ ๆ และทำงานเป็นระบบ
+                                ชอบทำงานสายดิจิทัล สนใจเว็บแอป ชอบพัฒนาเว็บและดีไซน์
+                                รักการเรียนรู้ ลงมือทำจริง และใส่ใจรายละเอียด
                             </p>
                         </div>
                     </div>
                 </div>
+
+                <!-- การ์ดฝั่งขวา: จุดแข็ง -->
                 <div class="col-12 col-lg-6">
                     <div class="card h-100">
                         <div class="card-body">
@@ -98,28 +117,32 @@
                         </div>
                     </div>
                 </div>
-                <hr>
+
             </div>
+
+            <!-- เส้นคั่นย่อหน้าระหว่าง section -->
+            <hr class="mt-4">
+        </div>
     </section>
+
 
     <!-- ===== SECTION: Education (การศึกษา) ===== -->
     <section id="education" class="section-pad bg-light">
         <div class="container">
             <h2 class="h4 mb-3">Education</h2>
 
-            <!-- row = 1 แถว -->
             <div class="row g-3">
 
-                <!-- คอลัมน์ซ้าย -->
+                <!-- วุฒิ ปวส -->
                 <div class="col-12 col-lg-6">
-                    <!-- card = กล่องข้อมูลการศึกษา -->
                     <div class="card h-100">
                         <div class="card-body">
-                            <h3 class="h6 mb-1">ปวส - คอมพิวเตอร์ธุรกิจ</h3>
+                            <h3 class="h6 mb-1">ปวส — คอมพิวเตอร์ธุรกิจ</h3>
                             <p class="mb-1">คณะเทคโนโลยีสารสนเทศ</p>
                             <p class="mb-1">
-                                <a href="http://www.petkasem.ac.th/index.php/en/" target="_blank" rel="noopener">
-                                    วิทยาลัยเทคโนโลยีการจัดการเพชรเกษม
+                                <a href="http://www.petkasem.ac.th/index.php/en/"
+                                   target="_blank" rel="noopener">
+                                   วิทยาลัยเทคโนโลยีการจัดการเพชรเกษม
                                 </a>
                             </p>
                             <small class="text-secondary">ปีการศึกษา 2564–2566</small>
@@ -127,7 +150,7 @@
                     </div>
                 </div>
 
-                <!-- คอลัมน์ขวา -->
+                <!-- ปริญญาตรี -->
                 <div class="col-12 col-lg-6">
                     <div class="card h-100">
                         <div class="card-body">
@@ -143,123 +166,150 @@
                     </div>
                 </div>
 
-            </div> <!-- /row -->
+            </div>
 
-            <!-- เส้นคั่นย่อหน้า ให้อยู่ข้างนอก row -->
             <hr class="mt-4">
-
         </div>
     </section>
+
 
     <!-- ===== SECTION: Skills ===== -->
     <section id="skills" class="section-pad">
         <div class="container">
+            <h2 class="h4 mb-3">Skills</h2>
+
             <div class="row g-4">
                 <div class="col-12 col-md-6">
-                    <p class="mb-1 fw-semibold">HTML/CSS/Bootstrap</p>
-                    <div class="progress" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                    <p class="mb-1 fw-semibold">HTML / CSS / Bootstrap</p>
+                    <div class="progress" role="progressbar"
+                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                         <div class="progress-bar" style="width:85%"></div>
                     </div>
                 </div>
+
                 <div class="col-12 col-md-6">
                     <p class="mb-1 fw-semibold">JavaScript</p>
-                    <div class="progress" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress" role="progressbar"
+                         aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
                         <div class="progress-bar" style="width:70%"></div>
                     </div>
                 </div>
+
                 <div class="col-12 col-md-6">
                     <p class="mb-1 fw-semibold">C# / .NET (พื้นฐาน)</p>
-                    <div class="progress" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress" role="progressbar"
+                         aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                         <div class="progress-bar" style="width:20%"></div>
                     </div>
                 </div>
+
                 <div class="col-12 col-md-6">
                     <p class="mb-1 fw-semibold">Design / Figma</p>
-                    <div class="progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress" role="progressbar"
+                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                         <div class="progress-bar" style="width:75%"></div>
                     </div>
                 </div>
+
                 <div class="col-12 col-md-6">
                     <p class="mb-1 fw-semibold">Java (พื้นฐาน)</p>
-                    <div class="progress" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress" role="progressbar"
+                         aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
                         <div class="progress-bar" style="width:70%"></div>
                     </div>
                 </div>
+
                 <div class="col-12 col-md-6">
-                    <p class="mb-1 fw-semibold">N8N</p>
-                    <div class="progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                    <p class="mb-1 fw-semibold">n8n (Workflow Automation)</p>
+                    <div class="progress" role="progressbar"
+                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                         <div class="progress-bar" style="width:50%"></div>
                     </div>
                 </div>
-                <hr class="mt-4">
             </div>
+
+            <hr class="mt-4">
+        </div>
     </section>
+
 
     <!-- ===== SECTION: Others (อื่น ๆ) ===== -->
     <section id="others" class="section-pad bg-light">
         <div class="container">
             <h2 class="h4 mb-3">Others</h2>
 
-            <!-- row = 1 แถว -->
             <div class="row g-3">
 
-                <!-- คอลัมน์ซ้าย -->
+                <!-- ความสนใจ -->
                 <div class="col-12 col-lg-6">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h3 class="h6 mb-1"></h3>
-                            <p class="mb-1">
-                            <h4>ความสนใจ</h4>
-                            </p>
-                            <p class="mb-1">สร้างเว็บ ทำ UX/UI เพื่อใช้งาน</p>
-                            <p class="mb-1">Code ไม่ว่าจะเป็น Java,Python,c#</p>
-                            <p class="mb-1">เว็บแอป</p>
+                            <h3 class="h6 mb-2">ความสนใจ</h3>
+                            <p class="mb-1">สร้างเว็บ / ทำ UX/UI ที่ใช้งานได้จริง</p>
+                            <p class="mb-1">การเขียนโค้ด (Java, Python, C#)</p>
+                            <p class="mb-1">เว็บแอปและระบบอัตโนมัติ</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- คอลัมน์ขวา -->
+                <!-- การอบรม / ใบรับรอง -->
                 <div class="col-12 col-lg-6">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h3 class="h6 mb-1">
-                                <h4>Training & Certifications</h4>
-                            </h3>
-                            <p class="mb-1">อบรม:Cyber Security Forensics</p>
-                            <p class="mb-1"><a href="https://ibb.co/nMswxLzQ" target="_blank" rel="noopener">
-                                    Certifications</a></p>
+                            <h3 class="h6 mb-2">Training &amp; Certifications</h3>
+                            <p class="mb-1">อบรม: Cyber Security Forensics</p>
+                            <p class="mb-1">
+                                <a href="https://ibb.co/nMswxLzQ" target="_blank" rel="noopener">
+                                    ดูใบรับรอง
+                                </a>
+                            </p>
                             <small class="text-secondary">ปี 2568</small>
                         </div>
                     </div>
                 </div>
 
-            </div> <!-- /row -->
+            </div>
 
-            <!-- เส้นคั่นย่อหน้า ให้อยู่ข้างนอก row -->
             <hr class="mt-4">
-
         </div>
     </section>
 
+
     <!-- ===== SECTION: Contact (ช่องทางติดต่อ) ===== -->
-    <!-- ใช้ Ordered List (ol) และรูป at.png แทนสัญลักษณ์ @ เพื่อกันสแปม ตาม requirement -->
+    <!-- ใช้ Ordered List (ol) + ใช้รูปแทน @ -->
     <section id="contact" class="section-pad">
         <div class="container">
             <h2 class="h4 mb-3">Contact</h2>
+
             <ol class="ps-3">
                 <li class="mb-2">
                     อีเมล (สถาบันฯ):
                     <span class="align-middle">
                         6752101159
-                        <img src="img/at.png" alt="@" class="align-text-bottom" style="height:14px;margin:0 5px;">
+                        <img src="img/at.png" alt="@" class="align-text-bottom"
+                             style="height:14px;margin:0 5px;">
                         stu.pim.ac.th
                     </span>
                 </li>
+
                 <li class="mb-2">โทรศัพท์: 091-928-1756</li>
                 <li class="mb-2">ที่อยู่: 222/56 จังหวัดนนทบุรี</li>
-                <li class="mb-2"><a href="https://github.com/S-Gyver" rel="noopener">Github</a></li>
-                <li class="mb-2"><a href="https://www.tiktok.com/@sgyver" rel="noopener">Tiktok</a></li>
+
+                <li class="mb-2">
+                    <a href="https://github.com/S-Gyver" target="_blank" rel="noopener">
+                        GitHub
+                    </a>
+                </li>
+
+                <li class="mb-2">
+                    <a href="https://www.tiktok.com/@sgyver" target="_blank" rel="noopener">
+                        TikTok
+                    </a>
+                </li>
+            </ol>
+
         </div>
     </section>
+
 </body>
 </html>

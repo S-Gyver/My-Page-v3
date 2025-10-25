@@ -1,61 +1,76 @@
 /* ===================================================================
    CSS ของเราเอง (ไม่ใช่ของ Bootstrap)
-   - กำหนดธีมพาสเทลด้วย CSS variables
-   - ทำพื้นหลัง hero ไล่สี
-   - ปรับเงาการ์ด/ปุ่ม/แถบ progress
-   - ทำ Navbar แบบ Hamburger ด้วย CSS-only (checkbox hack)
+   - ธีมพาสเทล
+   - hero ไล่สี
+   - การ์ดเงานุ่ม
+   - progress bar พาสเทล
+   - navbar แบบ hamburger ด้วย checkbox (ไม่ใช้ JS)
    =================================================================== */
 
-/* ---------- ธีมพาสเทลของเรา (override ผ่าน CSS variables) ---------- */
+/* ---------- ธีมพาสเทลของเรา (override ตัวแปร Bootstrap) ---------- */
 :root{
-  /* พาเลตหลัก */
-  --bs-primary:   #ff9ac6;  /* pink pastel */
-  --bs-secondary: #b4b8ff;  /* lavender */
-  --bs-info:      #93d9ff;  /* sky */
-  --bs-success:   #7ae1b8;  /* mint */
+  /* โทนสีหลัก */
+  --bs-primary:   #ff9ac6;  /* ชมพูพาสเทล */
+  --bs-secondary: #b4b8ff;  /* ม่วงลาเวนเดอร์ */
+  --bs-info:      #93d9ff;  /* ฟ้าพาสเทล */
+  --bs-success:   #7ae1b8;  /* เขียวมิ้นต์ */
 
-  /* สีลิงก์หลัก/ตอน hover */
+  /* สีลิงก์ */
   --bs-link-color:       var(--bs-primary);
   --bs-link-hover-color: #ff7fb5;
 
-  /* ความโค้งมุมโกลบอล */
+  /* มุมโค้ง */
   --bs-border-radius: .9rem;
 
-  /* เงาที่เราใช้เอง */
+  /* เงาที่ใช้ซ้ำ */
   --shadow-soft: 0 6px 18px rgba(180,184,255,.14);
   --shadow-hero: 0 12px 28px rgba(255,154,198,.25);
 }
 
-/* ---------- โครงหน้า/การเลื่อน ---------- */
-/* ให้เลื่อนนุ่มเมื่อลิงก์ anchor */
-html{ scroll-behavior:smooth; }
+/* ---------- โครงหน้า / spacing / scroll ---------- */
+html{
+  scroll-behavior: smooth;       /* เลื่อนนุ่มเวลาคลิกเมนู anchor */
+}
 
-/* กันเนื้อหาไม่ให้จมใต้ navbar (เพราะ fixed-top) */
-body{ padding-top: 4.25rem; }
+body{
+  padding-top: 4.25rem;          /* ดันเนื้อหาให้ไม่โดน navbar fixed-top ทับ */
+}
 
-/* เวลาคลิกลิงก์ไปยัง section ให้มีระยะกัน navbar */
-section { scroll-margin-top: 5rem; }
+section{
+  scroll-margin-top: 5rem;       /* ตอนกระโดดไปหา #id ให้เหลือระยะใต้ navbar */
+}
 
-/* ระยะ padding ส่วน section */
-.section-pad{ padding: 64px 0; }
+.section-pad{
+  padding: 64px 0;               /* ระยะหายใจแนวตั้งของแต่ละ section */
+}
 
-/* ---------- HERO (พื้นหลังไล่สีของเราเอง) ---------- */
+/* ---------- HERO ด้านบน (พื้นหลังไล่สี) ---------- */
 .hero{
-  background: linear-gradient(135deg,#fff5f9 0%,#f4f5ff 35%,#f3fbff 100%);
+  background: linear-gradient(135deg,
+              #fff5f9 0%,
+              #f4f5ff 35%,
+              #f3fbff 100%);
   box-shadow: var(--shadow-hero);
   border-bottom: 1px solid rgba(180,184,255,.18);
 }
 
-/* ---------- หัวเรื่องไล่สี (เฉพาะข้อความ) ---------- */
+/* ---------- ข้อความชื่อ (h1) ไล่สีชมพู -> ม่วง -> ฟ้า ---------- */
 .text-gradient{
-  background: linear-gradient(90deg, #ff9ac6, #b4b8ff 60%, #93d9ff);
+  background: linear-gradient(90deg,
+              #ff9ac6,
+              #b4b8ff 60%,
+              #93d9ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* ---------- การ์ด/โปรเกรสบาร์ (ตกแต่งเพิ่มจากของ Bootstrap) ---------- */
-.card{ border:0; box-shadow: var(--shadow-soft); }
+/* ---------- การ์ด + โปรเกรสบาร์ ให้ฟีลพาสเทลนุ่ม ---------- */
+.card{
+  border: 0;
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--bs-border-radius);
+}
 
 .progress{
   background: rgba(180,184,255,.18);
@@ -64,24 +79,28 @@ section { scroll-margin-top: 5rem; }
 }
 .progress-bar{
   background: linear-gradient(90deg, #ff9ac6, #b4b8ff);
+  border-radius: inherit;
 }
 
-/* ---------- อวตาร (ให้รูปครอปสวย) ---------- */
-.object-fit-cover{ object-fit: cover; }
-.rounded-circle.shadow-sm{ box-shadow: 0 8px 18px rgba(0,0,0,.08) !important; }
+/* ---------- โปรไฟล์รูปวงกลมให้ดูเด้ง ---------- */
+.object-fit-cover{
+  object-fit: cover;
+}
+.rounded-circle.shadow-sm{
+  box-shadow: 0 8px 18px rgba(0,0,0,.08) !important;
+}
 
 /* ===================================================================
-   Navbar CSS-only (ส่วนนี้เป็น “ของเราเองทั้งหมด”)
-   ทำ Hamburger โดยไม่ใช้ JavaScript
+   NAVBAR (CSS-only hamburger)
    =================================================================== */
 
-/* ซ่อน checkbox ที่ใช้ควบคุมสถานะเมนูบนจอเล็ก */
-.nav-toggle{ 
-  position: absolute; 
-  left: -9999px; 
+/* ซ่อน checkbox toggle (ถ้าไม่ซ่อน จะเห็นเป็นสี่เหลี่ยมเล็ก ๆ ข้างคำว่า RESUME) */
+.nav-toggle{
+  position: absolute;
+  left: -9999px;
 }
 
-/* ปุ่ม Hamburger (label) ของเราเอง */
+/* ปุ่ม hamburger (เฉพาะจอเล็ก) */
 .custom-toggler{
   border: none;
   display: inline-flex;
@@ -91,40 +110,41 @@ section { scroll-margin-top: 5rem; }
   cursor: pointer;
 }
 .custom-toggler .toggler-bar{
-  width: 26px; height: 2px;
+  width: 26px;
+  height: 2px;
   background: #333;
   display: block;
   border-radius: 2px;
 }
 
-/* โครงเมนูแบบพับ/กาง: เริ่มต้น “ปิดไว้” บนจอเล็ก */
+/* ซ่อนเมนูบนจอเล็กเริ่มต้น */
 .custom-collapse{
   display: none;
 }
 
-/* ถ้า checkbox ถูกติ๊ก (ผู้ใช้กด hamburger) ให้ “แสดงเมนู” */
+/* ถ้า checkbox ถูกติ๊ก -> โชว์เมนู (จอเล็ก) */
 .nav-toggle:checked ~ .custom-collapse{
   display: block;
 }
 
-/* สไตล์ลิงก์ใน navbar ตอน hover/active */
+/* สีลิงก์ navbar ตอน hover / focus */
 .custom-nav .nav-link:hover,
 .custom-nav .nav-link:focus{
   color: var(--bs-primary);
 }
-.custom-nav .nav-link.active{ 
-  color: var(--bs-primary); 
+
+/* สีลิงก์ navbar ตอน active (ลิงก์ปัจจุบัน) */
+.custom-nav .nav-link.active{
+  color: var(--bs-primary);
   font-weight: 600;
 }
 
-/* ขนาดหน้าจอ ≥ 992px (lg up): โชว์เมนูตลอดเหมือน Bootstrap ปกติ */
+/* จอ >= lg: ซ่อน hamburger และโชว์เมนูเสมอ (เหมือน Bootstrap ปกติ) */
 @media (min-width: 992px){
-  .custom-toggler{ display: none !important; }   /* ซ่อนปุ่ม hamburger */
-  .custom-collapse{ display: block !important; } /* แสดงเมนูเสมอ */
+  .custom-toggler{
+    display: none !important;
+  }
+  .custom-collapse{
+    display: block !important;
+  }
 }
-
-/* หมายเหตุ:
-   - คลาสของ Bootstrap (เช่น .navbar, .container, .row, .col, .card, .progress) ยังทำงานตามปกติ
-   - ส่วนที่เป็นการ “ควบคุมพับ/กาง” navbar บนจอเล็กทั้งหมด มาจาก CSS ของเราเอง (custom-*)
-   - ไม่มี JavaScript ใด ๆ
-*/
